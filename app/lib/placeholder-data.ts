@@ -40,5 +40,17 @@ const cuisines = [
   { id: 24, title: 'Vegetarian', image_url: '/cuisines/vegetarian.png' }
 ];
 
+const offers = [
+  { id: 1, title: '20% off on all orders', image_url: '/offers/offer.png', startDate: '2024-12-01', endDate: '2024-12-31'},
+  { id: 2, title: 'Free dessert with main course', image_url: '/offers/offer.png', startDate: '2024-12-11', endDate: '2024-12-31'},
+  { id: 3, title: 'Buy 1 Get 1 Free on selected items', image_url: '/offers/offer.png', startDate: '2024-12-01', endDate: '2024-12-20' },
+  { id: 4, title: 'Free delivery on orders over 500 BDT', image_url: '/offers/offer.png' },
+  { id: 5, title: '10% cashback with selected payment methods', image_url: '/offers/offer.png' },
+  { id: 6, title: 'Combo Meals starting at 199 BDT', image_url: '/offers/offer.png' },
+  { id: 7, title: 'Special discounts for first-time users', image_url: '/offers/offer.png' },
+  { id: 8, title: '50% off on beverages', image_url: '/offers/offer.png' },
+  { id: 9, title: 'Festive season special deals', image_url: '/offers/offer.png' },
+  { id: 10, title: 'Exclusive discounts for premium members', image_url: '/offers/offer.png' }
+];
 
-export { users, cuisines };
+export { users, cuisines, offers };
