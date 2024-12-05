@@ -53,4 +53,139 @@ const offers = [
   { id: 10, title: 'Exclusive discounts for premium members', image_url: '/offers/offer.png' }
 ];
 
-export { users, cuisines, offers };
+const vendors = [
+  {
+    id: '2EFA58C9-8A61-4D1A-8DBA-3EF3DB1F41B8',
+    name: 'Spicy Delight',
+    type: 'Restaurant',
+    cuisine: [1, 2], // Italian, Bengali
+    isOpen: true,
+    acceptsVouchers: true,
+    offers: [1, 2],
+    image_url: '/vendors/vendor-placeholder.png',
+    menu: [
+      { id: 101, title: 'Plain Rice', image_url: '/menus/menu-placeholder.png', price: 50, description: 'Perfectly cooked plain rice.' },
+      { id: 102, title: 'Fish Curry', image_url: '/menus/menu-placeholder.png', price: 120, description: 'Traditional Bengali fish curry.' },
+    ],
+    rating: 4.6,
+    reviews: 120,
+    location: { lat: 23.8103, lng: 90.4125, address: '23 Gulshan Ave, Dhaka' },
+    deliveryFee: 30,
+    deliveryTime: 30
+  },
+  {
+    id: '65DA89C7-FA8F-4BA8-8D3B-6F2D44CF8C44',
+    name: 'Homely Bites',
+    type: 'Home Chef',
+    cuisine: [2, 8], // Bengali, Dumplings
+    isOpen: true,
+    acceptsVouchers: false,
+    offers: [3],
+    image_url: '/vendors/vendor-placeholder.png',
+    menu: [
+      { id: 201, title: 'Panta Bhat', image_url: '/menus/menu-placeholder.png', price: 60, description: 'Fermented rice with condiments.' },
+      { id: 202, title: 'Chicken Dumpling', image_url: '/menus/menu-placeholder.png', price: 100, description: 'Juicy chicken dumplings.' },
+    ],
+    rating: 4.8,
+    reviews: 80,
+    location: { lat: 23.8235, lng: 90.3657, address: '5/3 Banani, Dhaka' },
+    deliveryFee: 25,
+    deliveryTime: 25
+  },
+  {
+    id: '9FCDAB79-37B4-48B9-9C44-DCF2D097F77A',
+    name: 'Pizza Paradise',
+    type: 'Restaurant',
+    cuisine: [1, 34], // Italian, Pizza
+    isOpen: true,
+    acceptsVouchers: true,
+    offers: [4, 5],
+    image_url: '/vendors/vendor-placeholder.png',
+    menu: [
+      { id: 301, title: 'Margherita Pizza', image_url: '/menus/menu-placeholder.png', price: 250, description: 'Classic Margherita pizza.' },
+      { id: 302, title: 'Pepperoni Pizza', image_url: '/menus/menu-placeholder.png', price: 350, description: 'Loaded with pepperoni.' },
+    ],
+    rating: 4.7,
+    reviews: 200,
+    location: { lat: 23.7500, lng: 90.3910, address: 'House 12, Dhanmondi 32, Dhaka' },
+    deliveryFee: 35,
+    deliveryTime: 40
+  },
+  {
+    id: '8D9F0C3F-419A-46D4-BF50-6CE7E7B52D1F',
+    name: 'Thai Express',
+    type: 'Restaurant',
+    cuisine: [40], // Thai
+    isOpen: false,
+    acceptsVouchers: false,
+    offers: [6],
+    image_url: '/vendors/vendor-placeholder.png',
+    menu: [
+      { id: 401, title: 'Pad Thai', image_url: '/menus/menu-placeholder.png', price: 300, description: 'Authentic Thai noodle dish.' },
+      { id: 402, title: 'Tom Yum Soup', image_url: '/menus/menu-placeholder.png', price: 180, description: 'Spicy and sour Thai soup.' },
+    ],
+    rating: 4.5,
+    reviews: 150,
+    location: { lat: 23.7946, lng: 90.4042, address: 'Sector 11, Uttara, Dhaka' },
+    deliveryFee: 40,
+    deliveryTime: 35
+  },
+  {
+    id: '6E90D689-2653-46BA-8490-B8D86AB89A56',
+    name: 'Sweet Haven',
+    type: 'Home Chef',
+    cuisine: [42], // Sweets
+    isOpen: true,
+    acceptsVouchers: true,
+    offers: [7, 8],
+    image_url: '/vendors/vendor-placeholder.png',
+    menu: [
+      { id: 501, title: 'Rasgulla', image_url: '/menus/menu-placeholder.png', price: 20, description: 'Soft and spongy rasgullas.' },
+      { id: 502, title: 'Gulab Jamun', image_url: '/menus/menu-placeholder.png', price: 25, description: 'Sweet and syrupy Gulab Jamun.' },
+    ],
+    rating: 4.9,
+    reviews: 95,
+    location: { lat: 23.7808, lng: 90.4075, address: 'Bashundhara R/A, Dhaka' },
+    deliveryFee: 20,
+    deliveryTime: 20
+  },
+  {
+    id: '4CF7D3A8-833A-42B6-8D0A-7276A5713AC4',
+    name: 'Mediterranean Delights',
+    type: 'Restaurant',
+    cuisine: [24, 35], // Mediterranean, Sandwiches
+    isOpen: true,
+    acceptsVouchers: false,
+    offers: [9],
+    image_url: '/vendors/vendor-placeholder.png',
+    menu: [
+      { id: 601, title: 'Falafel Wrap', image_url: '/menus/menu-placeholder.png', price: 220, description: 'Delicious falafel in pita bread.' },
+      { id: 602, title: 'Hummus Platter', image_url: '/menus/menu-placeholder.png', price: 150, description: 'Classic hummus with sides.' },
+    ],
+    rating: 4.4,
+    reviews: 130,
+    location: { lat: 23.8151, lng: 90.4116, address: 'Road 11, Banani, Dhaka' },
+    deliveryFee: 30,
+    deliveryTime: 30
+  },
+  {
+    id: 'B6A7F4EC-B2E5-4BB5-B714-5A1F6C45E34E',
+    name: 'Juice Junction',
+    type: 'Home Chef',
+    cuisine: [26], // Juice Corner
+    isOpen: true,
+    acceptsVouchers: true,
+    offers: [10],
+    image_url: '/vendors/vendor-placeholder.png',
+    menu: [
+      { id: 701, title: 'Mango Smoothie', image_url: '/menus/menu-placeholder.png', price: 120, description: 'Fresh mango smoothie.' },
+      { id: 702, title: 'Detox Green Juice', image_url: '/menus/menu-placeholder.png', price: 100, description: 'Healthy green detox juice.' },
+    ],
+    rating: 4.7,
+    reviews: 110,
+    location: { lat: 23.7634, lng: 90.3981, address: 'Road 15, Mohammadpur, Dhaka' },
+    deliveryFee: 25,
+    deliveryTime: 25
+  },
+];
+export { users, cuisines, offers, vendors };
