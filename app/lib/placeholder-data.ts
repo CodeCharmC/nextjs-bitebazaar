@@ -198,4 +198,20 @@ const reviews = [
   { id: 6, vendor_id: vendors[5].id, user_id: users[0].id, rating: 4.4, comment: 'Good food' },
   { id: 7, vendor_id: vendors[6].id, user_id: users[0].id, rating: 4.3, comment: 'Good food' },
 ];
-export { users, cuisines, offers, vendors, reviews };
+
+const orders = [
+  {
+    id: 1,
+    user_id: users[0].id,
+    vendor_id: vendors[0].id,
+    items: [
+      { menu_id: 101, quantity: 2 },
+      { menu_id: 102, quantity: 1 }
+    ],
+    totalAmount: 1100,
+    deliveryAddress: users[0].savedAddresses[0].address,
+    status: 'Pending',
+    date: '2024-12-05'
+  }
+];
+export { users, cuisines, offers, vendors, reviews, orders };
