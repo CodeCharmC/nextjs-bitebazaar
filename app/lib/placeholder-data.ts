@@ -188,4 +188,14 @@ const vendors = [
     deliveryTime: 25
   },
 ];
-export { users, cuisines, offers, vendors };
+
+const reviews = [
+  { id: 1, vendor_id: vendors[0].id, user_id: users[0].id, rating: 4.8, comment: 'Amazing food!' },
+  { id: 2, vendor_id: vendors[1].id, user_id: users[0].id, rating: 4.7, comment: 'Good food' },
+  { id: 3, vendor_id: vendors[2].id, user_id: users[0].id, rating: 4.9, comment: 'Good food' },
+  { id: 4, vendor_id: vendors[3].id, user_id: users[0].id, rating: 4.6, comment: 'Good food' },
+  { id: 5, vendor_id: vendors[4].id, user_id: users[0].id, rating: 4.5, comment: 'Good food' },
+  { id: 6, vendor_id: vendors[5].id, user_id: users[0].id, rating: 4.4, comment: 'Good food' },
+  { id: 7, vendor_id: vendors[6].id, user_id: users[0].id, rating: 4.3, comment: 'Good food' },
+];
+export { users, cuisines, offers, vendors, reviews };
