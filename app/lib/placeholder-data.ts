@@ -214,4 +214,9 @@ const orders = [
     date: '2024-12-05'
   }
 ];
-export { users, cuisines, offers, vendors, reviews, orders };
+
+const payments = [
+  { id: 1, order_id: orders[0].id, method: 'Card', status: 'Success', amount: 1100, date: '2024-12-05' }
+];
+
+export { users, cuisines, offers, vendors, reviews, orders, payments };
