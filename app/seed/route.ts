@@ -111,6 +111,30 @@ async function seedOffers() {
   return insertedOffers;
 }
 
+async function seedReviews() {
+  await client.sql`
+    CREATE TABLE IF NOT EXISTS reviews (
+      id SERIAL PRIMARY KEY,
+      vendor_id UUID NOT NULL,
+      user_id UUID NOT NULL,
+      rating FLOAT NOT NULL,
+      comment TEXT
+    );
+  `;
+
+  const insertedReviews = await Promise.all(
+    reviews.map((review) =>
+      client.sql`
+        INSERT INTO reviews (id, vendor_id, user_id, rating, comment)
+        VALUES (${review.id}, ${review.vendor_id}, ${review.user_id}, ${review.rating}, ${review.comment})
+        ON CONFLICT (id) DO NOTHING;
+      `
+    )
+  );
+
+  return insertedReviews;
+}
+
 export async function GET() {
   try {
     await client.sql`BEGIN`;
@@ -118,6 +142,7 @@ export async function GET() {
     await seedCuisines();
     await seedVendors();
     await seedOffers();
+    await seedReviews();
     await client.sql`COMMIT`;
 
     return Response.json({ message: 'Database seeded successfully' });
