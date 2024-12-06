@@ -17,12 +17,26 @@ async function seedUsers() {
       saved_addresses JSONB
     );
   `;
+
+  const insertedUsers = await Promise.all(
+    users.map(async (user) => {
+      const hashedPassword = await bcrypt.hash(user.password, 10);
+      return client.sql`
+        INSERT INTO users (id, name, email, password, phone, address, saved_addresses)
+        VALUES (${user.id}, ${user.name}, ${user.email}, ${hashedPassword}, ${user.phone}, ${user.address}, ${JSON.stringify(user.savedAddresses)})
+        ON CONFLICT (id) DO NOTHING;
+      `;
+    })
+  );
+
+  return insertedUsers;
 }
 
 export async function GET() {
   try {
     await client.sql`BEGIN`;
     await seedUsers();
+
     await client.sql`COMMIT`;
 
     return Response.json({ message: 'Database seeded successfully' });
