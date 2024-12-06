@@ -1,67 +1,160 @@
-import { lusitana } from '@/app/ui/fonts';
+'use client';
+
 import {
   AtSymbolIcon,
   KeyIcon,
-  ExclamationCircleIcon,
+  PhoneIcon,
+  ArrowRightIcon,
 } from '@heroicons/react/24/outline';
-import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button } from './button';
+import { useState } from 'react';
 
 export default function LoginForm() {
+  const [usePhone, setUsePhone] = useState(false);
+
   return (
-    <form className="space-y-3">
-      <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
-        <h1 className={`${lusitana.className} mb-3 text-2xl`}>
-          Please log in to continue.
-        </h1>
-        <div className="w-full">
+    <form className="w-full max-w-md space-y-6 bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50 p-8 rounded-xl shadow-lg">
+      {/* Title */}
+      <h1 className="text-2xl font-bold text-gray-800 text-center">
+        Welcome Back to <span className="text-orange-500">Bite</span>
+        <span className="text-purple-500">Bazaar</span>
+      </h1>
+      <p className="text-sm text-gray-600 text-center">
+        Log in to your account to enjoy delicious food at your fingertips.
+      </p>
+
+      {/* Toggle Login Method */}
+      <div className="flex justify-center gap-4">
+        <button
+          type="button"
+          className={`px-4 py-2 rounded-full font-medium transition-all ${
+            !usePhone
+              ? 'bg-purple-600 text-white'
+              : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+          }`}
+          onClick={() => setUsePhone(false)}
+        >
+          Use Email
+        </button>
+        <button
+          type="button"
+          className={`px-4 py-2 rounded-full font-medium transition-all ${
+            usePhone
+              ? 'bg-orange-500 text-white'
+              : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+          }`}
+          onClick={() => setUsePhone(true)}
+        >
+          Use Phone
+        </button>
+      </div>
+
+      {/* Login Form Fields */}
+      <div>
+        {!usePhone ? (
+          <div className="space-y-4">
           <div>
             <label
-              className="mb-3 mt-5 block text-xs font-medium text-gray-900"
               htmlFor="email"
+              className="block text-sm font-medium text-gray-700 mb-2"
             >
-              Email
+              Email Address
             </label>
             <div className="relative">
               <input
-                className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="email"
                 type="email"
                 name="email"
-                placeholder="Enter your email address"
+                placeholder="Enter your email"
+                className="w-full rounded-lg border border-gray-300 p-3 pl-10 shadow-sm focus:ring-purple-500 focus:border-purple-500"
                 required
               />
-              <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+              <AtSymbolIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
             </div>
           </div>
-          <div className="mt-4">
+          
+          {/* Password Field */}
+          <div>
             <label
-              className="mb-3 mt-5 block text-xs font-medium text-gray-900"
               htmlFor="password"
+              className="block text-sm font-medium text-gray-700 mb-2"
             >
               Password
             </label>
             <div className="relative">
               <input
-                className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="password"
                 type="password"
                 name="password"
-                placeholder="Enter password"
+                placeholder="Enter your password"
+                className="w-full rounded-lg border border-gray-300 p-3 pl-10 shadow-sm focus:ring-purple-500 focus:border-purple-500"
                 required
-                minLength={6}
               />
-              <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+              <KeyIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
             </div>
           </div>
-        </div>
-        <Button className="mt-4 w-full">
-          Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
-        </Button>
-        <div className="flex h-8 items-end space-x-1">
-          {/* Add form errors here */}
-        </div>
+          </div>
+        ) : (
+          <div className="space-y-4">
+          <div>
+            <label
+              htmlFor="phone"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Phone Number
+            </label>
+            <div className="relative">
+              <input
+                id="phone"
+                type="tel"
+                name="phone"
+                placeholder="Enter your phone number"
+                className="w-full rounded-lg border border-gray-300 p-3 pl-10 shadow-sm focus:ring-orange-500 focus:border-orange-500"
+                required
+              />
+              <PhoneIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+            </div>
+          </div> 
+              
+          {/* Password Field */}
+          <div>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Password
+            </label>
+            <div className="relative">
+              <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Enter your password"
+                className="w-full rounded-lg border border-gray-300 p-3 pl-10 shadow-sm focus:ring-orange-500 focus:border-orange-500"
+                required
+              />
+              <KeyIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+            </div>
+          </div>
+          </div>  
+        )}
       </div>
+
+      {/* Login Button */}
+      <Button
+        className="w-full bg-gradient-to-r from-purple-600 via-orange-500 to-yellow-500 hover:from-purple-700 hover:to-yellow-600 text-white font-semibold py-3 flex items-center justify-center"
+        type="submit"
+      >
+        Log In <ArrowRightIcon className="ml-2 h-5 w-5" />
+      </Button>
+
+      {/* Footer */}
+      <p className="text-center text-sm text-gray-600">
+        Don't have an account?{' '}
+        <a href="/register" className="text-purple-500 hover:underline">
+          Sign up here
+        </a>
+      </p>
     </form>
   );
 }
