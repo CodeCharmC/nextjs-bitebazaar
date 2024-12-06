@@ -54,11 +54,45 @@ async function seedCuisines() {
   return insertedCuisines;
 }
 
+async function seedVendors() {
+  await client.sql`
+    CREATE TABLE IF NOT EXISTS vendors (
+      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      type VARCHAR(255) NOT NULL,
+      cuisine INT[],
+      is_open BOOLEAN,
+      accepts_vouchers BOOLEAN,
+      offers INT[],
+      image_url TEXT,
+      menu JSONB,
+      rating FLOAT,
+      reviews INT,
+      location JSONB,
+      delivery_fee INT,
+      delivery_time INT
+    );
+  `;
+
+  const insertedVendors = await Promise.all(
+    vendors.map((vendor) =>
+      client.sql`
+        INSERT INTO vendors (id, name, type, cuisine, is_open, accepts_vouchers, offers, image_url, menu, rating, reviews, location, delivery_fee, delivery_time)
+        VALUES (${vendor.id}, ${vendor.name}, ${vendor.type}, ${JSON.stringify(vendor.cuisine)}, ${vendor.isOpen}, ${vendor.acceptsVouchers}, ${JSON.stringify(vendor.offers)}, ${vendor.image_url}, ${JSON.stringify(vendor.menu)}, ${vendor.rating}, ${vendor.reviews}, ${JSON.stringify(vendor.location)}, ${vendor.deliveryFee}, ${vendor.deliveryTime})
+        ON CONFLICT (id) DO NOTHING;
+      `
+    )
+  );
+
+  return insertedVendors;
+}
+
 export async function GET() {
   try {
     await client.sql`BEGIN`;
     await seedUsers();
     await seedCuisines();
+    await seedVendors();
     await client.sql`COMMIT`;
 
     return Response.json({ message: 'Database seeded successfully' });
