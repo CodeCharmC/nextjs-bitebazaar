@@ -32,11 +32,33 @@ async function seedUsers() {
   return insertedUsers;
 }
 
+async function seedCuisines() {
+  await client.sql`
+    CREATE TABLE IF NOT EXISTS cuisines (
+      id SERIAL PRIMARY KEY,
+      title VARCHAR(255) NOT NULL,
+      image_url TEXT NOT NULL
+    );
+  `;
+
+  const insertedCuisines = await Promise.all(
+    cuisines.map((cuisine) =>
+      client.sql`
+        INSERT INTO cuisines (id, title, image_url)
+        VALUES (${cuisine.id}, ${cuisine.title}, ${cuisine.image_url})
+        ON CONFLICT (id) DO NOTHING;
+      `
+    )
+  );
+
+  return insertedCuisines;
+}
+
 export async function GET() {
   try {
     await client.sql`BEGIN`;
     await seedUsers();
-
+    await seedCuisines();
     await client.sql`COMMIT`;
 
     return Response.json({ message: 'Database seeded successfully' });
