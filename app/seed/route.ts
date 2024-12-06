@@ -87,12 +87,37 @@ async function seedVendors() {
   return insertedVendors;
 }
 
+async function seedOffers() {
+  await client.sql`
+    CREATE TABLE IF NOT EXISTS offers (
+      id SERIAL PRIMARY KEY,
+      title VARCHAR(255) NOT NULL,
+      image_url TEXT,
+      start_date DATE,
+      end_date DATE
+    );
+  `;
+
+  const insertedOffers = await Promise.all(
+    offers.map((offer) =>
+      client.sql`
+        INSERT INTO offers (id, title, image_url, start_date, end_date)
+        VALUES (${offer.id}, ${offer.title}, ${offer.image_url}, ${offer.startDate}, ${offer.endDate})
+        ON CONFLICT (id) DO NOTHING;
+      `
+    )
+  );
+
+  return insertedOffers;
+}
+
 export async function GET() {
   try {
     await client.sql`BEGIN`;
     await seedUsers();
     await seedCuisines();
     await seedVendors();
+    await seedOffers();
     await client.sql`COMMIT`;
 
     return Response.json({ message: 'Database seeded successfully' });
