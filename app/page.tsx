@@ -25,16 +25,16 @@ export default function Page() {
          {/* Buttons */}
          <div className="flex justify-center gap-4">
          <Link
-            href="/menu"
+            href="/login"
             className="px-8 py-3 bg-purple-600 text-white font-semibold text-lg rounded-lg shadow-lg transition-all hover:scale-105 hover:bg-purple-700"
          >
-            Explore Menu
+            Log In
          </Link>
          <Link
-            href="/order-now"
+            href="/dashboard"
             className="px-8 py-3 bg-orange-500 text-white font-semibold text-lg rounded-lg shadow-lg transition-all hover:scale-105 hover:bg-orange-600"
          >
-            Order Now
+            Explore Menu
          </Link>
          </div>
       </div>
