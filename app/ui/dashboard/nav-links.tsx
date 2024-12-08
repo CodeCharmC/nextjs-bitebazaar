@@ -9,7 +9,7 @@ import {
 import Link from 'next/link';
 
 const links = [
-  { name: 'Delivery', href: '/dashboard', icon: HomeIcon },
+  { name: 'Delivery', href: '/dashboard/delivery', icon: HomeIcon },
   {
     name: 'Pick-Up', href: '/dashboard/pick-up', icon: DocumentDuplicateIcon },
   { name: 'Mart', href: '/dashboard/mart', icon: UserGroupIcon },
