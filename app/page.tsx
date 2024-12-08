@@ -31,7 +31,7 @@ export default function Page() {
             Log In
          </Link>
          <Link
-            href="/dashboard"
+            href="/dashboard/delivery"
             className="px-8 py-3 bg-orange-500 text-white font-semibold text-lg rounded-lg shadow-lg transition-all hover:scale-105 hover:bg-orange-600"
          >
             Explore Menu
