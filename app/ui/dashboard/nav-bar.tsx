@@ -16,11 +16,9 @@ export default function NavBar() {
             </div>      
             <div className="flex items-center gap-4">
                <Lang/>
-               {/* Login Buttons */}
                <button className="px-4 py-2 bg-purple-500 text-white rounded-lg shadow-md hover:bg-purple-600">
                   Login
-                  </button>
-               {/* Signup Buttons */}
+               </button>
                <button className="px-4 py-2 bg-orange-500 text-white rounded-lg shadow-md hover:bg-orange-600">
                   Sign Up
                </button>
@@ -28,7 +26,6 @@ export default function NavBar() {
                <Cart/>
             </div>
          </div>
-
          <nav className="px-6 pb-0 pt-2">
             <div className="flex flex-row justify-start items-center gap-1">
                <NavLinks />
