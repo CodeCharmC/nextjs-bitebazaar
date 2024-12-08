@@ -1,3 +1,5 @@
+import CuisinesSearch from "./cuisines-scearch";
+
 export default function FilterSidebar() {
   return (
     <aside className="w-full md:w-64 p-6 bg-transparent border border-gray-300 m-3 mt-6 shadow-lg flex flex-col gap-6 rounded-lg">
@@ -42,35 +44,7 @@ export default function FilterSidebar() {
 
       {/* Cuisines */}
       <div>
-        <h3 className="text-lg font-semibold mb-3">Cuisines</h3>
-        
-        <select
-          className="w-full px-4 py-2 border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-orange-200"
-          defaultValue="relevance"
-        >
-          <option value="relevance">Relevance</option>
-          <option value="fastest">Fastest Delivery</option>
-          <option value="distance">Distance</option>
-        </select>
-
-        <div className="space-y-2">
-          <label className="flex items-center">
-            <input type="checkbox" className="mr-2" />
-            Italian
-          </label>
-          <label className="flex items-center">
-            <input type="checkbox" className="mr-2" />
-            Chinese
-          </label>
-          <label className="flex items-center">
-            <input type="checkbox" className="mr-2" />
-            Indian
-          </label>
-          <label className="flex items-center">
-            <input type="checkbox" className="mr-2" />
-            Mexican
-          </label>
-        </div>
+        <CuisinesSearch />
       </div>
 
       {/* Price Range */}
