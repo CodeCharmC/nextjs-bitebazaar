@@ -2,18 +2,19 @@
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
 import {
-  UserGroupIcon,
-  HomeIcon,
-  DocumentDuplicateIcon,
+  TruckIcon,
+  ShoppingBagIcon,
+  BuildingStorefrontIcon,
+  ShoppingCartIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
 const links = [
-  { name: 'Delivery', href: '/dashboard/delivery', icon: HomeIcon },
+  { name: 'Delivery', href: '/dashboard/delivery', icon: TruckIcon },
   {
-    name: 'Pick-Up', href: '/dashboard/pick-up', icon: DocumentDuplicateIcon },
-  { name: 'Mart', href: '/dashboard/mart', icon: UserGroupIcon },
-  { name: 'Shops', href: '/dashboard/shops', icon: UserGroupIcon },
+    name: 'Pick-Up', href: '/dashboard/pick-up', icon: ShoppingBagIcon, },
+  { name: 'Mart', href: '/dashboard/mart', icon: BuildingStorefrontIcon },
+  { name: 'Shops', href: '/dashboard/shops', icon: ShoppingCartIcon },
 ];
 
 export default function NavLinks() {
